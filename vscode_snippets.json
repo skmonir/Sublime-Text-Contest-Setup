@@ -1,0 +1,603 @@
+{
+	// Code -> Snippet format: https://codepen.io/cbejensen/pen/WXLxaE
+	// Place your snippets for cpp here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+	// Example:
+	// "PrintToConsole": {
+	// 	"prefix": ["log"],
+	// 	"body": [
+	// 	]
+	// },
+	"long long": {
+		"prefix": [
+			"LL"
+		],
+		"body": [
+			"long long"
+		]
+	},
+	"unsigned long long": {
+		"prefix": [
+			"ULL"
+		],
+		"body": [
+			"unsigned long long"
+		]
+	},
+	"Random Number Generator": {
+		"prefix": [
+			"rng"
+		],
+		"body": [
+			"mt19937 my_rand(chrono::steady_clock::now().time_since_epoch().count());",
+			"$0"
+		]
+	},
+	"Read From File": {
+		"prefix": [
+			"file_read"
+		],
+		"body": [
+			"freopen(\"input.txt\", \"r\", stdin);"
+		]
+	},
+	"Write Into File": {
+		"prefix": [
+			"file_write"
+		],
+		"body": [
+			"freopen(\"output.txt\", \"w\", stdout);"
+		]
+	},
+	"Input String Array 0-based": {
+		"prefix": [
+			"input_array_string"
+		],
+		"body": [
+			"for (int i = 0; i < ${1:size}; ++i) {",
+			"\tcin >> ${2:container}[i];",
+			"}",
+			"$0"
+		]
+	},
+	"Input Char Array": {
+		"prefix": [
+			"input_string"
+		],
+		"body": [
+			"scanf(\"%s\", ${1:s});",
+			"$0"
+		]
+	},
+	"Input Undirected Graph": {
+		"prefix": [
+			"input_graph"
+		],
+		"body": [
+			"for (int i = 1; i <= m; ++i) {",
+			"\tint u, v; Int(u, v);",
+			"\tg[u].push_back(v);",
+			"\tg[v].push_back(u);",
+			"}",
+			"$0"
+		]
+	},
+	"Input Tree": {
+		"prefix": [
+			"input_tree"
+		],
+		"body": [
+			"for (int i = 1; i < n; ++i) {",
+			"\tint u, v; Int(u, v);",
+			"\tg[u].push_back(v);",
+			"\tg[v].push_back(u);",
+			"}",
+			"$0"
+		]
+	},
+	"Input Int Array 1-based": {
+		"prefix": [
+			"input_array_int"
+		],
+		"body": [
+			"for (int i = 1; i <= ${1:size}; ++i) {",
+			"\tInt(${2:container}[i]);",
+			"}",
+			"$0"
+		]
+	},
+	"Input Int Matrix 1-based": {
+		"prefix": [
+			"input_matrix"
+		],
+		"body": [
+			"for (int i = 1; i <= ${1:row}; ++i) {",
+			"\tfor (int j = 1; j <= ${2:column}; ++j) {",
+			"\t\tInt(${3:container}[i][j]);",
+			"\t}",
+			"}",
+			"$0"
+		]
+	},
+	"Output Int Matrix 1-based": {
+		"prefix": [
+			"output_matrix"
+		],
+		"body": [
+			"for (int i = 1; i <= ${1:row}; ++i) {",
+			"\tfor (int j = 1; j <= ${2:column}; ++j) {",
+			"\t\tprintf(\"%d%c\", ${4:container}[i][j], \"\\n \"[j < ${3:column}]);",
+			"\t}",
+			"}",
+			"$0"
+		]
+	},
+	"Output Int Array 0-based": {
+		"prefix": [
+			"output_array_int_0"
+		],
+		"body": [
+			"for (int i = 0; i < ${1:size}; ++i) {",
+			"\tprintf(\"%d%c\", ${2:container}[i], \"\\n \"[i + 1 < n]);",
+			"}",
+			"$0"
+		]
+	},
+	"Output Int Array 1-based": {
+		"prefix": [
+			"output_array_int_1"
+		],
+		"body": [
+			"for (int i = 1; i <= ${1:size}; ++i) {",
+			"\tprintf(\"%d%c\", ${2:container}[i], \"\\n \"[i < n]);",
+			"}",
+			"$0"
+		]
+	},
+	"Bit Operations": {
+		"prefix": [
+			"bit_operation"
+		],
+		"body": [
+			"inline int chkBit(int N, int pos) {return N & (1 << pos);}",
+			"inline int setBit(int N, int pos) {return N = N | (1 << pos);}",
+			"inline int resBit(int N, int pos) {return N = N & ~(1 << pos);}",
+		]
+	},
+	"Days Of Each Month": {
+		"prefix": [
+			"days_of_months"
+		],
+		"body": [
+			"int day[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};",
+		]
+	},
+	"Name Of Each Month": {
+		"prefix": [
+			"name_of_months"
+		],
+		"body": [
+			"string month[12] = {\"January\", \"February\", \"March\", \"April\", \"May\", \"June\", \"July\", \"August\", \"September\", \"October\", \"November\", \"December\"};",
+		]
+	},
+	"Name Of Each Day": {
+		"prefix": [
+			"name_of_days"
+		],
+		"body": [
+			"string week[7] = {\"Sunday\", \"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\"};",
+		]
+	},
+	"Direction Array of Grid Walk": {
+		"prefix": [
+			"direction_array"
+		],
+		"body": [
+			"const int dx[] = {1, 0, -1, 0, 1, 1, -1, -1};",
+			"const int dy[] = {0, 1, 0, -1, 1, -1, 1, -1};",
+		]
+	},
+	"Sieve For Prime Generation": {
+		"prefix": [
+			"sieve"
+		],
+		"body": [
+			"bitset<N> isPrime;",
+			"vector<int> primes;",
+			"",
+			"void sieve() {",
+			"\tisPrime.set();",
+			"\tisPrime[1] = 0;",
+			"\tfor (int i = 4; i < N; i += 2) {",
+			"\t\tisPrime[i] = 0;",
+			"\t}",
+			"\tint sq = sqrt(1.0 * N);",
+			"\tfor (int i = 3; i <= sq; i += 2) {",
+			"\t\tif (isPrime[i]) {",
+			"\t\t\tfor (int j = i * i; j < N; j += i << 1) {",
+			"\t\t\t\tisPrime[j] = 0;",
+			"\t\t\t}",
+			"\t\t}",
+			"\t}",
+			"\tprimes.push_back(2);",
+			"\tfor (int i = 3; i < N; i += 2) {",
+			"\t\tif (isPrime[i]) {",
+			"\t\t\tprimes.push_back(i);",
+			"\t\t}",
+			"\t}",
+			"}",
+			"$0",
+		]
+	},
+	"Sieve To Calc Small Prime Divisor": {
+		"prefix": [
+			"sieve_sp"
+		],
+		"body": [
+			"int sp[N];",
+			"bitset<N> isPrime;",
+			"",
+			"void sieve() {",
+			"\tisPrime.set();",
+			"\tint sq = sqrt(1.0 * N) + 1;",
+			"\tfor (int i = 2; i < N; i += 2) {",
+			"\t\tsp[i] = 2;",
+			"\t}",
+			"\tfor (int i = 3; i < N; i += 2) {",
+			"\t\tif (isPrime[i]) {",
+			"\t\t\tsp[i] = i;",
+			"\t\t\tif (i > sq) continue;",
+			"\t\t\tfor (int j = i * i; j < N; j += i << 1) {",
+			"\t\t\t\tif (isPrime[j]) {",
+			"\t\t\t\t\tsp[j] = i, isPrime[j] = 0;",
+			"\t\t\t\t}",
+			"\t\t\t}",
+			"\t\t}",
+			"\t}",
+			"}",
+			"$0",
+		]
+	},
+	"Prime Checker": {
+		"prefix": [
+			"is_prime"
+		],
+		"body": [
+			"inline bool is_prime(int n) {",
+			"\tif (n < 2) {",
+			"\t\treturn false;",
+			"\t}",
+			"\tint r = sqrt(n);",
+			"\tfor (int i = 2; i <= r; i++) {",
+			"\t\tif (n % i == 0) {",
+			"\t\t\treturn false;",
+			"\t\t}",
+			"\t}",
+			"\treturn true;",
+			"}",
+			"$0"
+		]
+	},
+	"Palindrome Checker": {
+		"prefix": [
+			"is_palindrome"
+		],
+		"body": [
+			"inline bool is_palindrome(const string &s) {",
+			"\tint l = 0, r = (int) s.size() - 1;",
+			"\twhile (l < r) {",
+			"\t\tif (s[l] != s[r]) {",
+			"\t\t\treturn false;",
+			"\t\t}",
+			"\t\t++l, --r;",
+			"\t}",
+			"\treturn true;",
+			"}",
+			"$0"
+		]
+	},
+	"Vowel Checker": {
+		"prefix": [
+			"is_vowel"
+		],
+		"body": [
+			"inline bool is_vowel(char ch) {",
+			"\tconst string w = \"aeiou\";",
+			"\treturn w.find(ch) != string::npos;",
+			"}",
+			"$0"
+		]
+	},
+	"Perfect Square Checker": {
+		"prefix": [
+			"is_perfect_square"
+		],
+		"body": [
+			"inline long long sq(long long x) {",
+			"\treturn x * x;",
+			"}",
+			"",
+			"inline bool is_perfect_square(long long n) {",
+			"\tif (n < 0) {",
+			"\t\treturn false;",
+			"\t}",
+			"\tlong long r = sqrt(1.0 * n);",
+			"\treturn sq(r) == n || sq(r + 1) == n || sq(r - 1) == n;",
+			"}",
+			"$0"
+		]
+	},
+	"Extended GCD": {
+		"prefix": [
+			"extended_gcd"
+		],
+		"body": [
+			"int ext_gcd(int a, int b, int &x, int &y) {",
+			"\tif (b == 0) {",
+			"\t\tx = 1, y = 0;",
+			"\t\treturn a;",
+			"\t}",
+			"\tint x1, y1;",
+			"\tint g = ext_gcd(b, a % b, x1, y1);",
+			"\tx = y1, y = x1 - (a / b) * y1;",
+			"\treturn g;",
+			"}",
+			"$0"
+		]
+	},
+	"Count Digit In N factorial": {
+		"prefix": [
+			"digits_in_factorial"
+		],
+		"body": [
+			"int count_digits_in_factorial(int n) {",
+			"\tdouble digit = 0.0;",
+			"\tfor(int i = 2; i <= n; i++) {",
+			"\t\tdigit += log10(i);",
+			"\t}",
+			"\tdigit = floor(digit) + 1.0;",
+			"\treturn (int) digit;",
+			"}",
+			"$0"
+		]
+	},
+	"Smart Debugger": {
+		"prefix": [
+			"debugger"
+		],
+		"body": [
+			"/* Debugger Starts */",
+			"#define error(args...) {vector<string> _v = split(#args, ','); err(_v.begin(), args); cerr << \"\\n\";}",
+			"vector<string> split(const string &s, char c) {",
+			"\tvector<string> v; stringstream ss(s); string x; while (getline(ss, x, c)) v.push_back(x); return move(v);",
+			"}",
+			"void err(vector<string> :: iterator it) {}",
+			"template <typename T, typename... Args> void err(vector<string>:: iterator it, T a, Args... args) {",
+			"\tcerr << it->substr((*it)[0] == ' ', it->length()) << \" = \" << a << \", \"; err(++it, args...);",
+			"}",
+			"/* Debugger Ends */"
+		]
+	},
+	"Euler Phi Function Table": {
+		"prefix": [
+			"phi_table"
+		],
+		"body": [
+			"int phi[N];",
+			"bitset<N> isPrime;",
+			"",
+			"void euler_phi_table() {",
+			"\tisPrime.set();",
+			"\tfor (int i = 1; i < N; i++) {",
+			"\t\tphi[i] = i;",
+			"\t}",
+			"\tisPrime[1] = 0;",
+			"\tfor (int i = 2; i < N; i++) {",
+			"\t\tif (isPrime[i]) {",
+			"\t\t\tphi[i]--;",
+			"\t\t\tfor (int j = i << 1; j < N; j += i) {",
+			"\t\t\t\tphi[j] = (phi[j] / i) * (i - 1);",
+			"\t\t\t\tisPrime[j] = 0;",
+			"\t\t\t}",
+			"\t\t}",
+			"\t}",
+			"}",
+			"$0"
+		]
+	},
+	"Euler Phi Function": {
+		"prefix": [
+			"phi_single"
+		],
+		"body": [
+			"int phi(int n) {",
+			"\tint res = n, sq = sqrt(1.0 * n);",
+			"\tfor (int i = 2; i <= sq; i++) {",
+			"\t\tif (n % i == 0) {",
+			"\t\t\twhile (n % i == 0) {",
+			"\t\t\t\tn /= i;",
+			"\t\t\t}",
+			"\t\t\tres -= res / i;",
+			"\t\t}",
+			"\t}",
+			"\tif (n > 1) {",
+			"\t\tres -= res / n;",
+			"\t}",
+			"\treturn res;",
+			"}",
+			"$0"
+		]
+	},
+	"Binary Exponentiation": {
+		"prefix": [
+			"my_pow"
+		],
+		"body": [
+			"template <TN T> inline T my_pow(T base, T exp, T md) {",
+			"\tbase %= md; T res = 1;",
+			"\tif (base < 0) base += md;",
+			"\tif (exp < 0) exp += md - 1;",
+			"\tfor (; exp > 0; exp >>= 1) {",
+			"\t\tif (exp & 1) res = (res * base) % md;",
+			"\t\tbase = (base * base) % md;",
+			"\t}",
+			"\treturn res;",
+			"}",
+			"$0"
+		]
+	},
+	"Custom Cubic Root Function": {
+		"prefix": [
+			"my_cbrt"
+		],
+		"body": [
+			"template <TN T> inline T my_cbrt(T x) {",
+			"\tT y = (T) (powl((long double) x, 1.0 / 3.0) + 0.5);",
+			"\twhile (y * y * y < x) ++y;",
+			"\twhile (y * y * y > x) --y;",
+			"\treturn y * y * y == x ? y : -1;",
+			"}",
+			"$0"
+		]
+	},
+	"Custom Square Root Function": {
+		"prefix": [
+			"my_sqrt"
+		],
+		"body": [
+			"template <TN T> inline T my_sqrt(T x) {",
+			"\tT y = (T) (sqrtl((long double) x) + 0.5);",
+			"\twhile (y * y < x) ++y;",
+			"\twhile (y * y > x) --y;",
+			"\treturn y * y == x ? y : -1;",
+			"}",
+			"$0"
+		]
+	},
+	"Custom Multiplication Function": {
+		"prefix": [
+			"my_mult"
+		],
+		"body": [
+			"template <TN T> inline T my_mult(T a, T b, T md) {",
+			"\tT res = 0;",
+			"\tfor (; b > 0; b >>= 1, a = (a + a) % md) {",
+			"\t\tif (b & 1) res = (res + a) % md;",
+			"\t}",
+			"\treturn res;",
+			"}",
+			"$0"
+		]
+	},
+	"Binomial Cofficient Table": {
+		"prefix": [
+			"binomial_table"
+		],
+		"body": [
+			"int C[N][R];",
+			"",
+			"void binomial_table() {",
+			"\tfor (int i = 0; i < N; ++i) {",
+			"\t\tC[i][0] = 1;",
+			"\t}",
+			"\tfor (int i = 0; i < N; ++i) {",
+			"\t\tfor (int j = 0; j < R; ++j) {",
+			"\t\t\tC[i][j] = C[i - 1][j] + C[i - 1][j - 1];",
+			"\t\t\tif (C[i][j] >= mod) {",
+			"\t\t\t\tC[i][j] -= mod;",
+			"\t\t\t}",
+			"\t\t}",
+			"\t}",
+			"}",
+			"$0"
+		]
+	},
+	"Normal Template Code": {
+		"prefix": [
+			"normal_template"
+		],
+		"body": [
+			"#include <bits/stdc++.h>",
+			"",
+			"using namespace std;",
+			"",
+			"const int N = 1e5 + 7;",
+			"const int inf = 1e9 + 7;",
+			"const int mod = 1e9 + 7;",
+			"",
+			"",
+			"int solver() {",
+			"\t$0",
+			"\treturn 0;",
+			"}",
+			"",
+			"",
+			"int main() {",
+			"\tios::sync_with_stdio(0), cin.tie(0);",
+			"\t",
+			"\tint tt = 1;",
+			"\t// cin >> tt;",
+			"\tfor (int t = 1; t <= tt; ++t) {",
+			"\t\t// cout << \"Case \" << t << \": \";",
+			"\t\tsolver();",
+			"\t}",
+			"\t",
+			"\treturn 0;",
+			"}"
+		]
+	},
+	"Template Code": {
+		"prefix": [
+			"template"
+		],
+		"body": [
+			"#include <bits/stdc++.h>",
+			"",
+			"using namespace std;",
+			"",
+			"#define endl\t\t\t\t'\\n'",
+			"#define TN\t\t\t\t    typename",
+			"#define mod\t\t\t\t    1000000007LL",
+			"#define len(x)\t\t\t    (int) x.size()",
+			"#define all(x)\t\t\t    x.begin(), x.end()",
+			"#define rall(x)\t\t\t    x.rbegin(), x.rend()",
+			"#define mem(x, y)\t\t    memset(x, y, sizeof x)",
+			"#define FOR(x, l, r)\t\tfor (int x = l; x <= r; ++x)",
+			"#define ROF(x, l, r)\t\tfor (int x = l; x >= r; --x)",
+			"",
+			"template <TN T> inline void Int(T &n) {",
+			"\tn = 0; int f = 1; int ch = getchar();",
+			"\tfor (; !isdigit(ch); ch = getchar()) if (ch == '-') f = -1;",
+			"\tfor (; isdigit(ch); ch = getchar()) n = (n << 3) + (n << 1) + ch - '0';",
+			"\tn = n * f;",
+			"}",
+			"",
+			"template <TN T> T gcd(T a, T b) {return !b ? a : gcd(b, a % b);}",
+			"template <TN T> inline void umin(T &a, T b) {a = a < b ? a : b;}",
+			"template <TN T> inline void umax(T &a, T b) {a = a > b ? a : b;}",
+			"template <TN T, TN W> inline void Int(T &x, W &y) {Int(x), Int(y);}",
+			"template <TN T, TN W, TN Q> void Int(T &x, W &y, Q &z) {Int(x, y), Int(z);}",
+			"",
+			"const int N = 1e5 + 7;",
+			"const int inf = 1e9 + 7;",
+			"",
+			"",
+			"int solver() {",
+			"\t$0",
+			"\treturn 0;",
+			"}",
+			"",
+			"int main() {",
+			"\tint tt = 1;",
+			"\t// Int(tt);",
+			"\tfor (int t = 1; t <= tt; ++t) {",
+			"\t\t//printf(\"Case %d: \", ++t);",
+			"\t\tsolver();",
+			"\t}",
+			"\treturn 0;",
+			"}"
+		]
+	}
+}
