@@ -10,6 +10,14 @@
 	// 	"body": [
 	// 	]
 	// },
+	"Printf": {
+		"prefix": [
+			"pf"
+		],
+		"body": [
+			"printf(\"%d\\n\", ${1:var});"
+		]
+	},
 	"long long": {
 		"prefix": [
 			"LL"
@@ -128,7 +136,7 @@
 		"body": [
 			"for (int i = 1; i <= ${1:row}; ++i) {",
 			"\tfor (int j = 1; j <= ${2:column}; ++j) {",
-			"\t\tprintf(\"%d%c\", ${4:container}[i][j], \"\\n \"[j < ${3:column}]);",
+			"\t\tprintf(\"%d%c\", ${4:container}[i][j], \"\\n \"[j < ${2:column}]);",
 			"\t}",
 			"}",
 			"$0"
@@ -140,7 +148,7 @@
 		],
 		"body": [
 			"for (int i = 0; i < ${1:size}; ++i) {",
-			"\tprintf(\"%d%c\", ${2:container}[i], \"\\n \"[i + 1 < n]);",
+			"\tprintf(\"%d%c\", ${2:container}[i], \"\\n \"[i + 1 < ${1:size}]);",
 			"}",
 			"$0"
 		]
@@ -151,7 +159,7 @@
 		],
 		"body": [
 			"for (int i = 1; i <= ${1:size}; ++i) {",
-			"\tprintf(\"%d%c\", ${2:container}[i], \"\\n \"[i < n]);",
+			"\tprintf(\"%d%c\", ${2:container}[i], \"\\n \"[i < ${1:size}]);",
 			"}",
 			"$0"
 		]
@@ -363,22 +371,6 @@
 			"$0"
 		]
 	},
-	"Smart Debugger": {
-		"prefix": [
-			"debugger"
-		],
-		"body": [
-			"/* Debugger Starts */",
-			"#define error(...) err(#__VA_ARGS__, __VA_ARGS__)",
-			"template<TN Arg1> void err(const char* x, Arg1&& arg1) {",
-			"\tcerr << x << \" = \" << arg1 << endl;",
-			"}",
-			"template<TN Arg1, TN... Args> void err(const char* x, Arg1&& arg1, Args&&... args) {",
-			"\tcerr.write(x, strchr(x, ',')-x)<<\" = \"<<arg1<<\",\", err(strchr(x, ',')+1, args...);",
-			"}",
-			"/* Debugger Ends */"
-		]
-	},
 	"Euler Phi Function Table": {
 		"prefix": [
 			"phi_table"
@@ -495,22 +487,20 @@
 			"binomial_table"
 		],
 		"body": [
-			"int C[N][R];",
+			"long long C[N][N];",
 			"",
 			"void binomial_table() {",
-			"\tfor (int i = 0; i < N; ++i) {",
-			"\t\tC[i][0] = 1;",
-			"\t}",
-			"\tfor (int i = 0; i < N; ++i) {",
-			"\t\tfor (int j = 0; j < R; ++j) {",
-			"\t\t\tC[i][j] = C[i - 1][j] + C[i - 1][j - 1];",
+			"\tC[0][0] = 1;",
+			"\tfor (int i = 1; i < N; ++i) {",
+			"\t\tC[i][0] = C[i][i] = 1;",
+			"\t\tfor (int j = 1; j < i; ++j) {",
+			"\t\t\tC[i][j] = C[i - 1][j - 1] + C[i - 1][j];",
 			"\t\t\tif (C[i][j] >= mod) {",
 			"\t\t\t\tC[i][j] -= mod;",
 			"\t\t\t}",
 			"\t\t}",
 			"\t}",
-			"}",
-			"$0"
+			"}"
 		]
 	},
 	"Normal Template Code": {
@@ -566,6 +556,14 @@
 			"#define FOR(x, l, r)        for (int x = l; x <= r; ++x)",
 			"#define ROF(x, l, r)        for (int x = l; x >= r; --x)",
 			"",
+			"#define dbg(...) err(#__VA_ARGS__, __VA_ARGS__);",
+			"template<TN Arg1> void err(const char* x, Arg1&& arg1) {",
+			"\tcerr << x << \" = \" << arg1 << endl;",
+			"}",
+			"template<TN Arg1, TN... Args> void err(const char* x, Arg1&& arg1, Args&&... args) {",
+			"\tcerr.write(x, strchr(x, ',') - x) << \" = \" << arg1 << \",\", err(strchr(x, ',') + 1, args...);",
+			"}",
+			"",
 			"template <TN T> inline void Int(T &n) {",
 			"\tint f = 1, ch = getchar();",
 			"\tfor (n = 0; !isdigit(ch); ch = getchar()) if (ch == '-') f = -1;",
@@ -601,7 +599,7 @@
 			"\tint tt = 1;",
 			"\t// Int(tt);",
 			"\tfor (int t = 1; t <= tt; ++t) {",
-			"\t\t//printf(\"Case %d: \", ++t);",
+			"\t\t// printf(\"Case %d: \", ++t);",
 			"\t\tsolver();",
 			"\t}",
 			"\treturn 0;",
